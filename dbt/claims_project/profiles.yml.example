@@ -1,0 +1,16 @@
+# Copy this to ~/.dbt/profiles.yml (create the .dbt folder if it doesn't exist)
+# This file is intentionally NOT committed to git as-is because profiles.yml
+# is where real credentials normally live — .example is the convention.
+
+claims_project:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost      # use 'postgres' instead of 'localhost' if running dbt FROM inside the Airflow container
+      user: airflow
+      password: airflow
+      port: 5432
+      dbname: claims_warehouse
+      schema: public
+      threads: 4

@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: dim_providers
+    description: "One row per provider."
+    columns:
+      - name: provider_id
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_claims_by_provider
+    description: "Claims volume and financial recovery rate, aggregated by provider."
+    columns:
+      - name: provider_id
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('dim_providers')
+              field: provider_id
+      - name: total_claims
+        tests:
+          - not_null

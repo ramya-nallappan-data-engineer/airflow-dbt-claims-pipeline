@@ -1,0 +1,13 @@
+# dbt
+dbt/claims_project/target/
+dbt/claims_project/dbt_packages/
+dbt/claims_project/logs/
+
+# Airflow
+logs/
+*.pyc
+__pycache__/
+
+# Never commit real credentials
+profiles.yml
+.env

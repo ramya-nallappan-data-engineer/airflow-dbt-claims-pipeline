@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_claims
+    description: "Cleaned, type-cast claims data. One row per raw claim record (duplicates not yet removed — that happens in intermediate)."
+    columns:
+      - name: claim_id
+        description: "Claim identifier. NOT unique at this layer — duplicates are handled downstream."
+        tests:
+          - not_null
+      - name: claim_status
+        tests:
+          - accepted_values:
+              values: ['PAID', 'DENIED', 'PENDING']
+      - name: billed_amount
+        tests:
+          - not_null
