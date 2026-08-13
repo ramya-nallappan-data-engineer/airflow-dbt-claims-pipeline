@@ -21,3 +21,9 @@ models:
       +materialized: view
     marts:
       +materialized: table
+
+seeds:
+  claims_project:
+    raw_claims:
+      +column_types:
+        claim_date: date
